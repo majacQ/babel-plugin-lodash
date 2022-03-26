@@ -13,8 +13,9 @@
   ],
   "scripts": {
     "build": "babel src --out-dir lib || true",
-    "prepublish": "npm run build",
-    "test": "mocha --check-leaks --require @babel/register"
+    "prepublish": "npm run snyk-protect && npm run build",
+    "test": "mocha --check-leaks --require @babel/register",
+    "snyk-protect": "snyk-protect"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
@@ -45,7 +46,8 @@
     "@babel/types": "^7.0.0",
     "glob": "^7.1.1",
     "lodash": "^4.17.10",
-    "require-package-name": "^2.0.1"
+    "require-package-name": "^2.0.1",
+    "@snyk/protect": "latest"
   },
   "files": [
     "lib"
@@ -54,5 +56,6 @@
     "ignore": [
       "babel-plugin-lodash"
     ]
-  }
+  },
+  "snyk": true
 }
